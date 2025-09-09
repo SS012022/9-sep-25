@@ -25,7 +25,9 @@ const upload=multer({storage})
 app.post("/upload",upload.single('image'),(req,res)=>{
     return res.redirect("/api")
 })
-
+app.get("/health",(req,res)=>{
+    res.send("ok")
+})
 app.get("/download/:file",(req,res)=>{
     var file=req.params.file;
     var fileLocation=path.join("./uploads",file);
@@ -34,3 +36,6 @@ app.get("/download/:file",(req,res)=>{
 app.listen(8080,()=>{
     console.log("connected")
 })
+
+
+// for performance check
